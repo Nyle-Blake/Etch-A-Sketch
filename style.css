@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  border: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  width: 610px;
+  height: 610px;
+  background-color: lightgray;
+  padding: 10px;
+}
