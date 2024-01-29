@@ -1,8 +1,10 @@
 const grid = document.querySelector('.grid');
+const eraseBtn = document.querySelector('.eraseBtn')
 
-let selectedSize = "16";
+let selectedSize = "32";
+let selectedColor = "black"
 
-const buildGrid = (size) => {
+const createGrid = (size) => {
 
   let squareSize = document.querySelector('.grid').clientWidth / size;
   for (let i = 0; i < size * size; i++) {
@@ -15,3 +17,31 @@ const buildGrid = (size) => {
 
   return;
 };
+
+const colorGrid = (elem, color) => {
+  if (elem.buttons == 1) {
+    if (elem.target.classList == 'grid-square') {
+      let square = elem.target
+      square.style.backgroundColor = color;
+    }
+  } else { return }
+};
+
+const eraseGrid = () => {
+  grid.innerHTML = ''
+  createGrid(selectedSize)
+};
+
+eraseBtn.addEventListener('click', () => {
+  eraseGrid();
+});
+
+grid.addEventListener('mousedown', e => {
+  if (e.buttons == 1) {
+    window.addEventListener('mouseover', event => {
+      colorGrid(event, selectedColor);
+    })
+  }
+})
+
+createGrid(selectedSize);
